@@ -5,12 +5,15 @@
 class Contact
 {
     public :
+
+    int VerifInputNumber(std::string input);
+    int VerifInputString(std::string input);
     
     // Setters :
-        void SetFirstName(std::string input);
-        void SetLastName(std::string input);
+        int SetFirstName(std::string input);
+        int SetLastName(std::string input);
         void SetNickname(std::string input);
-        void SetNumber(std::string input);
+        int SetNumber(std::string input);
         void SetDarkSecret(std::string input);
 
 

@@ -23,7 +23,7 @@ check_up_to_date:
 	fi
 
 $(EXEC): $(OBJ)
-	@cmatrix -b -u 1 & 
+	@cmatrix -b -u 1 | lolcat & 
 	@sleep 1
 	@pkill cmatrix 
 	@echo "${YELLOW}Linking ${EXEC}...${RESET}" | lolcat 

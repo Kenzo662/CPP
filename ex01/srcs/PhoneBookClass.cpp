@@ -26,7 +26,7 @@ void Phonebook::PrintSearch(Contact *contact, int count) const
             while (++size < 10)
                 sub.insert(sub.size(), " ");
         }
-        std::cout << "    " << index << "     |" << sub << "|";
+        std::cout << "    " << index + 1 << "     |" << sub << "|";
         if (contact[index].GetLastName().size() > 10)
         {
             sub = contact[index].GetLastName().substr(0, 9);
@@ -52,7 +52,7 @@ void Phonebook::PrintSearch(Contact *contact, int count) const
             while (++size < 10)
                 sub.insert(sub.size(), " ");
         }
-        std::cout << sub << "|" << std::endl;
+        std::cout << sub << "|" << "\n";
     }
 }
 
@@ -62,16 +62,19 @@ void Phonebook::SetAdd(Contact *contact)
 
     std::cout << "What is your first name ?\n";
     getline(std::cin, input);
-    contact->SetFirstName(input);
+    while(contact->SetFirstName(input) == 1)
+        getline(std::cin, input);
     std::cout << "What is your last name ?\n";
     getline(std::cin, input);
-    contact->SetLastName(input);
+    while (contact->SetLastName(input) == 1)
+        getline(std::cin, input);
     std::cout << "What is your NickName ?\n";
     getline(std::cin, input);
     contact->SetNickname(input);
     std::cout << "What is your Number ?\n";
     getline(std::cin, input);
-    contact->SetNumber(input);
+    while (contact->SetNumber(input) == 1)
+        getline(std::cin, input);
     std::cout << "What is your Darkest Secret ?" << std::endl;
     getline(std::cin, input);
     contact->SetDarkSecret(input);
