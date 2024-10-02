@@ -2,7 +2,6 @@
 
 Fixed::Fixed() : _vFix(0)
 {
-    std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
@@ -11,13 +10,12 @@ Fixed::~Fixed()
 
 Fixed::Fixed( Fixed const & copy)
 {
-    std::cout << "Copy constructor called" << std::endl;
     *this = copy;
 }
 
 Fixed & Fixed::operator=( Fixed const & assign)
 {
-    std::cout << "= operator called with : " << assign.getRawBits()  << std::endl;
+    //std::cout << "= operator called with : " << assign.getRawBits()  << std::endl;
     this->_vFix = assign.getRawBits();
     return *this;
 }
@@ -34,13 +32,11 @@ void    Fixed::setRawBits(  int const raw )
 
 Fixed::Fixed( int integer )
 {
-    std::cout << "Int constructor called" << std::endl;
     _vFix = integer << _fBits;
 }
 
 Fixed::Fixed( float fl )
 {
-    std::cout << "Float constructor called" << std::endl;
     int power = 1 << _fBits;
     _vFix = roundf(fl * power);
 }
@@ -58,7 +54,7 @@ float   Fixed::toFloat( ) const
 
 std::ostream & operator<<(std::ostream & o, Fixed const & v_fix)
 {
-    std::cout << "<< operator called with : " << v_fix.getRawBits()  << std::endl;
+   // std::cout << "<< operator called with : " << v_fix.getRawBits()  << std::endl;
     o << v_fix.toFloat();
     return o;
 }
@@ -85,30 +81,92 @@ Fixed   Fixed::operator/(Fixed const &  toDiv) const
 
 bool   Fixed::operator!=(Fixed const & toComp) const
 {
-    return this->toFloat() != toComp.toFloat();
+    return this->_vFix != toComp._vFix;
 }
 
 bool   Fixed::operator==(Fixed const & toComp) const
 {
-    return this->toFloat() == toComp.toFloat();
+    return this->_vFix == toComp._vFix;
 }
 
 bool   Fixed::operator>(Fixed const & toComp) const
 {
-    return this->toFloat() > toComp.toFloat();
+    return this->_vFix > toComp._vFix;
 }
 
 bool   Fixed::operator<(Fixed const & toComp) const
 {
-    return this->toFloat() < toComp.toFloat();
+    return this->_vFix < toComp._vFix;
 }
 
 bool   Fixed::operator>=(Fixed const & toComp) const
 {
-    return this->toFloat() >= toComp.toFloat();
+    return this->_vFix >= toComp._vFix;
 }
 
 bool   Fixed::operator<=(Fixed const & toComp) const
 {
-    return this->toFloat() <= toComp.toFloat();;
+    return this->_vFix <= toComp._vFix;
+}
+
+Fixed & Fixed::operator++()
+{
+    ++this->_vFix ;
+    return *this;
+}
+
+Fixed   Fixed::operator++(int)
+{
+    Fixed tmp(*this);
+    this->_vFix++;
+    return tmp;
+}
+
+Fixed & Fixed::operator--()
+{
+    --this->_vFix;
+    return *this;
+}
+
+Fixed   Fixed::operator--(int)
+{
+    Fixed tmp(*this);
+    this->_vFix--;
+    return tmp;
+}
+
+Fixed  Fixed::min(Fixed &n1 , Fixed &n2)
+{
+    if (n1 == n2)
+        std::cout << "Les deux nombres sont égaux." << std::endl;
+    if (n1 > n2)
+        return n2;
+    return n1;
+}
+
+Fixed  Fixed::min(Fixed const &n1 , Fixed const &n2)
+{
+    if (n1 == n2)
+        std::cout << "Les deux nombres sont égaux." << std::endl;
+    if (n1 > n2)
+        return n2;
+    return n1;
+}
+
+Fixed  Fixed::max(Fixed &n1 , Fixed &n2)
+{
+    if (n1 == n2)
+        std::cout << "Les deux nombres sont égaux." << std::endl;
+    if (n1 < n2)
+        return n2;
+    return n1;
+}
+
+Fixed  Fixed::max(Fixed const &n1 , Fixed const &n2)
+{
+    if (n1 == n2)
+        std::cout << "Les deux nombres sont égaux." << std::endl;
+    if (n1 < n2)
+        return n2;
+    return n1;
 }

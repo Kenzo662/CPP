@@ -14,18 +14,28 @@ class Fixed
         Fixed( float const fl);
         ~Fixed();
 
+        static Fixed   min(Fixed &n1 , Fixed &n2);
+        static Fixed   min(Fixed const &n1 , Fixed const &n2);
+        static Fixed   max(Fixed &n1 , Fixed &n2);
+        static Fixed   max(Fixed const &n1 , Fixed const &n2);
+
         Fixed & operator=(Fixed const &  assign);
         Fixed   operator+(Fixed const &  toAdd) const;
-        Fixed   operator-(Fixed const &  toAdd) const;
-        Fixed   operator*(Fixed const &  toAdd) const;
-        Fixed   operator/(Fixed const &  toAdd) const;
+        Fixed   operator-(Fixed const &  toSub) const;
+        Fixed   operator*(Fixed const &  toMult) const;
+        Fixed   operator/(Fixed const &  toDiv) const;
 
-        bool   operator==(Fixed const &  toAdd) const;
-        bool   operator!=(Fixed const &  toAdd) const;
-        bool   operator<(Fixed const &  toAdd) const;
-        bool   operator>(Fixed const &  toAdd) const;
-        bool   operator<=(Fixed const &  toAdd) const;
-        bool   operator>=(Fixed const &  toAdd) const;
+        Fixed & operator++();
+        Fixed   operator++(int);
+        Fixed & operator--();
+        Fixed   operator--(int);
+
+        bool   operator==(Fixed const &  toComp) const;
+        bool   operator!=(Fixed const &  toComp) const;
+        bool   operator<(Fixed const &  toComp) const;
+        bool   operator>(Fixed const &  toComp) const;
+        bool   operator<=(Fixed const &  toComp) const;
+        bool   operator>=(Fixed const &  toComp) const;
         
 
 
@@ -33,7 +43,6 @@ class Fixed
         int     toInt( void ) const;
         float   toFloat( void ) const;
         void    setRawBits( int const raw );
-   
 
 
 
