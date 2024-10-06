@@ -1,9 +1,9 @@
-#include "../includes/ScavTrap.hpp"
+#include "../includes/FragTrap.hpp"
 
 int main(void)
 {
     ClapTrap joe("Joe");
-    ScavTrap rick("Rick");
+    FragTrap rick("Rick");
 
     std::cout << "CLAPTRAP : \n";
     std::cout << "Name : " << joe.getName() << "\n";
@@ -11,7 +11,7 @@ int main(void)
     std::cout << "Energy : " << joe.getMana() << "\n";
     std::cout << "ATK : " << joe.getAttackdmg() << "\n\n\n";
 
-    std::cout << "SCAVTRAP : \n";
+    std::cout << "FragTrap : \n";
     std::cout << "Name : " << rick.getName() << "\n";
     std::cout << "Hp : " << rick.getHp() << "\n";
     std::cout << "Energy : " << rick.getMana() << "\n";
@@ -28,6 +28,6 @@ int main(void)
     std::cout << "Energy de Rick : " << rick.getMana() << "\n";
     std::cout << "Vie de Joe : " << joe.getHp() << std::endl;
 
-    rick.guardGate();
+    rick.highFivesGuys();
 
 }
