@@ -1,6 +1,6 @@
 MAKEFLAGS += -s
 
-CXX = g++
+CXX = c++
 EXEC = prog
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = $(wildcard srcs/*.cpp)
