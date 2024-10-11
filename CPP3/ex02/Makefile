@@ -1,8 +1,8 @@
 MAKEFLAGS += -s
 
-CC = g++
+CXX = g++
 EXEC = prog
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = $(wildcard srcs/*.cpp)
 OBJ = $(SRCS:.cpp=.o)
 GREEN = \033[32m
@@ -10,34 +10,21 @@ YELLOW = \033[33m
 RED = \033[31m
 RESET = \033[0m
 
-all: check_up_to_date $(EXEC)
-
-check_up_to_date:
-	@if [ -f $(EXEC) ]; then \
-		latest_obj_time=`stat -c %Y $(OBJ) 2>/dev/null | sort -nr | head -n1`; \
-		exec_time=`stat -c %Y $(EXEC)`; \
-		if [ "$$latest_obj_time" -le "$$exec_time" ]; then \
-			cowsay "The executable is already up to date." | lolcat; \
-			exit 0; \
-		fi \
-	fi
+all: $(EXEC)
 
 $(EXEC): $(OBJ)
-	@cmatrix -b -u 1 | lolcat & 
-	@sleep 1
-	@pkill cmatrix 
-	@echo "${YELLOW}Linking ${EXEC}...${RESET}" | lolcat 
-	@$(CC) $(CFLAGS) $(OBJ) -o $(EXEC)
-	@echo "${GREEN}Build complete.${RESET}" | lolcat 
+	@echo "${YELLOW}Linking ${EXEC}...${RESET}"
+	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(EXEC)
+	@echo "${GREEN}Build complete.${RESET}"
 
 clean:
-	@echo "${RED}Cleaning up object files...${RESET}" | lolcat
+	@echo "${RED}Cleaning up object files...${RESET}"
 	@rm -rf srcs/*.o 
-	@echo "${GREEN}Cleanup complete.${RESET}" | lolcat
+	@echo "${GREEN}Cleanup complete.${RESET}"
 
 fclean: clean
-	@echo "${RED}Removing executable ${EXEC}...${RESET}" | lolcat
+	@echo "${RED}Removing executable ${EXEC}...${RESET}"
 	@rm -rf $(EXEC)
-	@echo "${GREEN}Executable removed.${RESET}" | lolcat
+	@echo "${GREEN}Executable removed.${RESET}"
 
 re: fclean all

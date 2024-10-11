@@ -18,7 +18,7 @@ ScavTrap::~ScavTrap()
     std::cout << RED << "                     ScavTrap" << RESET << std::endl;
 }
 
-ScavTrap::ScavTrap( ScavTrap &copy)
+ScavTrap::ScavTrap( ScavTrap &copy) : ClapTrap(copy)
 {
     std::cout << "Copy constructor call";
     std::cout << RED << "                     ScavTrap" << RESET << std::endl;

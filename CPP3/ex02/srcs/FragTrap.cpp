@@ -18,7 +18,7 @@ FragTrap::~FragTrap()
     std::cout << RED << "                     FragTrap" << RESET << std::endl;
 }
 
-FragTrap::FragTrap( FragTrap &copy)
+FragTrap::FragTrap( FragTrap &copy) : ClapTrap(copy)
 {
     std::cout << "Copy constructor call";
     std::cout << RED << "                     FragTrap" << RESET << std::endl;

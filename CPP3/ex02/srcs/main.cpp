@@ -4,6 +4,7 @@ int main(void)
 {
     ClapTrap joe("Joe");
     FragTrap rick("Rick");
+    FragTrap kenz("Kenz");
 
     std::cout << "CLAPTRAP : \n";
     std::cout << "Name : " << joe.getName() << "\n";
@@ -29,5 +30,11 @@ int main(void)
     std::cout << "Vie de Joe : " << joe.getHp() << std::endl;
 
     rick.highFivesGuys();
+
+
+    rick.attack("Kenz");
+    kenz.takeDamage(rick.getAttackdmg());
+    std::cout << "Energy de Rick : " << rick.getMana() << "\n";
+    std::cout << "Vie de Kenz : " << kenz.getHp() << std::endl;
 
 }
