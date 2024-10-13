@@ -9,7 +9,7 @@ WrongAnimal::~WrongAnimal()
 
 }
 
-WrongAnimal::WrongAnimal( WrongAnimal &copy)
+WrongAnimal::WrongAnimal( WrongAnimal &copy) 
 {
     *this = copy;
 }
@@ -27,5 +27,5 @@ std::string     WrongAnimal::getType() const
 
 void    WrongAnimal::makeSound() const
 {
-    std::cout << "Error 404 (You need to specify which WrongAnimal it is)" << std::endl;
+    std::cout << "The animal tries to make a noise but nothing comes out..." << std::endl;
 }

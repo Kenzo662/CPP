@@ -9,7 +9,7 @@ WrongCat::~WrongCat()
 
 }
 
-WrongCat::WrongCat( WrongCat &copy)
+WrongCat::WrongCat( WrongCat &copy) : WrongAnimal(copy)
 {
     *this = copy;
 }

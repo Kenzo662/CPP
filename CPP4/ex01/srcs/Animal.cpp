@@ -2,15 +2,17 @@
 
 Animal::Animal() : type("No type specified")
 {
+    std::cout << "Default Animal constructor call" << std::endl;
 }
 
 Animal::~Animal()
 {
-
+    std::cout << "Default Animal destructor call" << std::endl;
 }
 
 Animal::Animal( Animal &copy)
 {
+    std::cout << "Animal copy constructor call" << std::endl;
     *this = copy;
 }
 

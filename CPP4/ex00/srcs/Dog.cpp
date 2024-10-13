@@ -9,7 +9,7 @@ Dog::~Dog()
 
 }
 
-Dog::Dog( Dog &copy)
+Dog::Dog( Dog &copy) : Animal(copy)
 {
     *this = copy;
 }
